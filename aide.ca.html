@@ -26,6 +26,11 @@
   </style>
 </head>
 <body>
+<script>
+  if (localStorage.getItem("isValidAccess") !== "true") {
+    window.location.href = "acces_refuse.html";
+  }
+</script>
   <h1>❓ Centre d'ajuda – FAFA Explorator</h1>
 
   <section>
@@ -56,5 +61,69 @@
     <h2>📬 Contacte</h2>
     <p>Si tens cap problema, contacta'ns a <a href="mailto:fafa.explorator@gmail.com">fafa.explorator@gmail.com</a>.</p>
   </section>
+
+<!-- Menu Admin Caché – Activation par code clavier 'FAFA' -->
+<style>
+  #adminPanel {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-family: sans-serif;
+    font-size: 14px;
+    max-width: 300px;
+  }
+  #adminPanel input, #adminPanel button {
+    margin: 5px 0;
+    padding: 6px;
+    width: 100%;
+  }
+</style>
+
+<div id="adminPanel">
+  <h3>🔧 Admin FAFA</h3>
+  <label>Étape atteinte :</label>
+  <input type="number" id="etapeInput" min="1" max="10" placeholder="1 à 10">
+  <button onclick="setEtape()">📌 Enregistrer étape</button>
+  <button onclick="unlockBonus()">🎁 Débloquer Bonus</button>
+  <button onclick="clearProgress()">🧹 Reset</button>
+</div>
+
+<script>
+  let secretCode = ['f','a','f','a'];
+  let keyBuffer = [];
+
+  window.addEventListener('keydown', function(e) {
+    keyBuffer.push(e.key.toLowerCase());
+    if (keyBuffer.length > 4) keyBuffer.shift();
+    if (keyBuffer.join('') === secretCode.join('')) {
+      document.getElementById('adminPanel').style.display = 'block';
+    }
+  });
+
+  function setEtape() {
+    const etape = parseInt(document.getElementById('etapeInput').value);
+    if (!isNaN(etape)) {
+      localStorage.setItem('etape', etape);
+      alert('✅ Étape définie à ' + etape);
+    }
+  }
+
+  function unlockBonus() {
+    localStorage.setItem('fafa_bonus', 'true');
+    alert('🎉 Bonus FAFA débloqué !');
+  }
+
+  function clearProgress() {
+    localStorage.clear();
+    alert('🧹 Progression réinitialisée');
+  }
+</script>
+
 </body>
 </html>

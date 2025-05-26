@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
+  <script src="fafa_access_guard.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About FAFA Explorator</title>
@@ -15,25 +16,21 @@
       text-align: center;
       padding: 2rem 1rem;
     }
-
     header {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
     }
-
     header img {
       width: 120px;
       margin-bottom: 1rem;
     }
-
     h1 {
       font-size: 2.2rem;
       margin-bottom: 1rem;
       text-shadow: 2px 2px 4px #000;
     }
-
     .content {
       max-width: 800px;
       margin: 0 auto;
@@ -42,23 +39,6 @@
       border-radius: 15px;
       box-shadow: 0 0 10px rgba(0,0,0,0.3);
     }
-
-    .content p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    .lang-switch {
-      margin: 1.5rem 0;
-    }
-
-    .lang-switch a {
-      margin: 0 1rem;
-      color: #facc15;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
     .btn-home {
       display: inline-block;
       margin-top: 2rem;
@@ -71,11 +51,9 @@
       font-size: 1rem;
       transition: background 0.3s;
     }
-
     .btn-home:hover {
       background: #fde68a;
     }
-
     footer {
       margin-top: 2rem;
       font-size: 0.9rem;
@@ -84,89 +62,92 @@
   </style>
 </head>
 <body>
+
   <header>
-    <img src="logo-fafa-explorator-clean.png" alt="Logo FAFA Explorator" />
+    <img src="logo-fafa-explorator.png" alt="Logo FAFA Explorator" />
     <h1>About FAFA Explorator</h1>
   </header>
 
-  <div class="lang-switch">
-    <a href="info.fr.html">🇬🇧 English</a>
-    <a href="info.ca.html">🟡 Català</a>
-  </div>
-
   <div class="content">
     <p>
-      FAFA Explorator is a connected treasure hunt in Banyuls-sur-Mer. <br />
-      🧭 Through 3 themed routes (Maillol, Wine Mystery, Old Port), explore the city solo, with family, or as a team!
-    </p>
-    <p>
-      💡 Each riddle is geolocated and comes with visual challenges, historical facts or creative missions.
-    </p>
-    <p>
-      🎯 Earn achievements, unlock bonuses with secret codes, and discover Banyuls like never before!
-    </p>
-    <p>
-      🔐 FAFA guarantees safety, anti-copy protection and a 100% fun and responsive experience!
-    </p>
-
-    <hr style="margin: 2rem 0; border: 1px solid #ccc;" />
-
-    <h2>FAFA HQ™ – Admin & Control</h2>
-    <p>
-      A secure system allows organizers to generate codes, unlock bonuses, track progress, and schedule mission releases via `.ics` files.
-    </p>
-    <p>
-      Administration is centralized with auto-sync achievements and reinforced anti-copy protection.
-    </p>
-    <p>
-      🧠 Used in schools, associations and tourism.
+      (Contenu spécifique à la langue à insérer ici... traduit pour en)
     </p>
   </div>
 
-  <a class="btn-home" href="index.html">⬅️ ⬅️ Back to Home</a>
+  <a class="btn-home" href="index.en.html">⬅️ Retour</a>
 
   <footer>
     © FAFA Explorator 2025 – Créé avec passion, couleurs et graffiti 💥
   </footer>
 
-<!-- BOUTON FLOTTANT AIDE MULTILINGUE -->
-<a href="aide.html" class="btn-aide-flottant" lang="fr" title="Besoin d'aide ?">❓</a>
-<a href="aide.en.html" class="btn-aide-flottant" lang="en" title="Need help?">❓</a>
-<a href="aide.ca.html" class="btn-aide-flottant" lang="ca" title="Necessites ajuda?">❓</a>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(reg => console.log('✅ Service Worker enregistré :', reg))
+        .catch(err => console.error('❌ Erreur SW :', err));
+    }
+  </script>
 
+<!-- Menu Admin Caché – Activation par code clavier 'FAFA' -->
 <style>
-  .btn-aide-flottant {
+  #adminPanel {
+    display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(45deg, #6e00ff, #b300b3);
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.9);
     color: white;
-    font-size: 1.5rem;
-    width: 55px;
-    height: 55px;
-    line-height: 55px;
-    text-align: center;
-    border-radius: 50%;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: transform 0.3s ease;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-family: sans-serif;
+    font-size: 14px;
+    max-width: 300px;
   }
-  .btn-aide-flottant:hover {
-    transform: scale(1.1);
-    background: linear-gradient(45deg, #7f3cff, #d500f9);
+  #adminPanel input, #adminPanel button {
+    margin: 5px 0;
+    padding: 6px;
+    width: 100%;
   }
 </style>
 
+<div id="adminPanel">
+  <h3>🔧 Admin FAFA</h3>
+  <label>Étape atteinte :</label>
+  <input type="number" id="etapeInput" min="1" max="10" placeholder="1 à 10">
+  <button onclick="setEtape()">📌 Enregistrer étape</button>
+  <button onclick="unlockBonus()">🎁 Débloquer Bonus</button>
+  <button onclick="clearProgress()">🧹 Reset</button>
+</div>
+
 <script>
-  const lang = navigator.language || navigator.userLanguage;
-  document.querySelectorAll('.btn-aide-flottant').forEach(btn => btn.style.display = 'none');
-  if (lang.includes('fr')) {
-    document.querySelector('.btn-aide-flottant[lang="fr"]').style.display = 'block';
-  } else if (lang.includes('ca')) {
-    document.querySelector('.btn-aide-flottant[lang="ca"]').style.display = 'block';
-  } else {
-    document.querySelector('.btn-aide-flottant[lang="en"]').style.display = 'block';
+  let secretCode = ['f','a','f','a'];
+  let keyBuffer = [];
+
+  window.addEventListener('keydown', function(e) {
+    keyBuffer.push(e.key.toLowerCase());
+    if (keyBuffer.length > 4) keyBuffer.shift();
+    if (keyBuffer.join('') === secretCode.join('')) {
+      document.getElementById('adminPanel').style.display = 'block';
+    }
+  });
+
+  function setEtape() {
+    const etape = parseInt(document.getElementById('etapeInput').value);
+    if (!isNaN(etape)) {
+      localStorage.setItem('etape', etape);
+      alert('✅ Étape définie à ' + etape);
+    }
+  }
+
+  function unlockBonus() {
+    localStorage.setItem('fafa_bonus', 'true');
+    alert('🎉 Bonus FAFA débloqué !');
+  }
+
+  function clearProgress() {
+    localStorage.clear();
+    alert('🧹 Progression réinitialisée');
   }
 </script>
 

@@ -1,176 +1,110 @@
-
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>🎉 Fin de l'enquête – Le Mystère de Maillol</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
+  <script src="fafa_access_guard.js"></script><link href="favicon.ico" rel="icon"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bravo Explorateur !</title>
+<style>
     body {
+      background: linear-gradient(to right, #7c3aed, #3b82f6);
+      color: white;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to top, #fce7f3, #fdf2f8);
-      color: #6b21a8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 60px 20px;
+      padding: 2rem;
+      height: 100vh;
     }
     h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
-      color: #a21caf;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px #000;
     }
-    h2 {
-      margin-top: 30px;
-      font-size: 1.4em;
-      color: #7e22ce;
-    }
-    .box {
-      background: white;
-      max-width: 700px;
-      margin: auto;
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.1);
-    }
-    .art {
-      margin: 20px auto;
-      font-size: 4em;
-      animation: pulse 1s infinite alternate;
-    }
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
-    }
-    .badge {
-      display: inline-block;
-      margin: 30px auto;
-      padding: 15px;
-      background: #ec4899;
-      color: white;
-      border-radius: 12px;
-      font-size: 1.2em;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    .quote {
-      font-style: italic;
-      color: #86198f;
-      margin-top: 30px;
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
     }
     .btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 24px;
-      background: #9333ea;
-      color: white;
-      border: none;
+      padding: 1rem 1.5rem;
+      background: #facc15;
+      color: #1e3a8a;
       border-radius: 10px;
-      font-size: 1em;
+      font-weight: bold;
       text-decoration: none;
-    }
-    .btn:hover {
-      background: #7e22ce;
     }
   </style>
 </head>
 <body>
 
-<!-- BOUTON AIDE MULTILINGUE (inline) -->
-<a href="aide.html" class="btn-aide" lang="fr">❓ Aide</a>
-<a href="aide.en.html" class="btn-aide" lang="en">❓ Help</a>
-<a href="aide.ca.html" class="btn-aide" lang="ca">❓ Ajuda</a>
+<h1>🎉 Bravo Explorateur !</h1>
+<p>Tu as terminé ce parcours FAFA avec succès. Continue l’aventure sur un autre jeu ou découvre ton badge de réussite !</p>
+<a class="btn" href="succes.html">Voir mes succès</a>
 
+<!-- Menu Admin Caché – Activation par code clavier 'FAFA' -->
 <style>
-  .btn-aide {
-    display: inline-block;
-    margin: 10px 10px 0 0;
-    padding: 12px 20px;
-    background: linear-gradient(45deg, #6e00ff, #b300b3);
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease;
-  }
-
-  .btn-aide:hover {
-    transform: scale(1.05);
-    background: linear-gradient(45deg, #7f3cff, #d500f9);
-  }
-</style>
-
-  <div class="box">
-    <h1>🎉 Bravo, enquête complétée !</h1>
-    <p>Tu as résolu les 10 énigmes et découvert la vérité derrière l’œuvre disparue de Maillol.</p>
-
-    <div class="art">🗿</div>
-    <h2>Œuvre retrouvée : <em>La Méditerranée</em></h2>
-
-    <div class="badge">🏆 Badge ultime : Gardien de l'Art</div>
-
-    <p class="quote">« L’art, c’est l’équilibre entre la force et la douceur. » – A. Maillol</p>
-
-    <a class="btn" href="index.html">🏠 Rejouer l'aventure</a>
-    <a class="btn" href="succes.html">🎖️ Voir mes succès</a>
-  </div>
-
-  <script>
-    localStorage.setItem("etape", "10");
-  </script>
-
-<!-- BOUTON FLOTTANT AIDE MULTILINGUE -->
-<a href="aide.html" class="btn-aide-flottant" lang="fr" title="Besoin d'aide ?">❓</a>
-<a href="aide.en.html" class="btn-aide-flottant" lang="en" title="Need help?">❓</a>
-<a href="aide.ca.html" class="btn-aide-flottant" lang="ca" title="Necessites ajuda?">❓</a>
-
-<style>
-  .btn-aide-flottant {
+  #adminPanel {
+    display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(45deg, #6e00ff, #b300b3);
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.9);
     color: white;
-    font-size: 1.5rem;
-    width: 55px;
-    height: 55px;
-    line-height: 55px;
-    text-align: center;
-    border-radius: 50%;
-    text-decoration: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    z-index: 999;
-    transition: transform 0.3s ease;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 9999;
+    font-family: sans-serif;
+    font-size: 14px;
+    max-width: 300px;
   }
-  .btn-aide-flottant:hover {
-    transform: scale(1.1);
-    background: linear-gradient(45deg, #7f3cff, #d500f9);
+  #adminPanel input, #adminPanel button {
+    margin: 5px 0;
+    padding: 6px;
+    width: 100%;
   }
 </style>
 
+<div id="adminPanel">
+  <h3>🔧 Admin FAFA</h3>
+  <label>Étape atteinte :</label>
+  <input type="number" id="etapeInput" min="1" max="10" placeholder="1 à 10">
+  <button onclick="setEtape()">📌 Enregistrer étape</button>
+  <button onclick="unlockBonus()">🎁 Débloquer Bonus</button>
+  <button onclick="clearProgress()">🧹 Reset</button>
+</div>
+
 <script>
-  const lang = navigator.language || navigator.userLanguage;
-  document.querySelectorAll('.btn-aide-flottant').forEach(btn => btn.style.display = 'none');
-  if (lang.includes('fr')) {
-    document.querySelector('.btn-aide-flottant[lang="fr"]').style.display = 'block';
-  } else if (lang.includes('ca')) {
-    document.querySelector('.btn-aide-flottant[lang="ca"]').style.display = 'block';
-  } else {
-    document.querySelector('.btn-aide-flottant[lang="en"]').style.display = 'block';
+  let secretCode = ['f','a','f','a'];
+  let keyBuffer = [];
+
+  window.addEventListener('keydown', function(e) {
+    keyBuffer.push(e.key.toLowerCase());
+    if (keyBuffer.length > 4) keyBuffer.shift();
+    if (keyBuffer.join('') === secretCode.join('')) {
+      document.getElementById('adminPanel').style.display = 'block';
+    }
+  });
+
+  function setEtape() {
+    const etape = parseInt(document.getElementById('etapeInput').value);
+    if (!isNaN(etape)) {
+      localStorage.setItem('etape', etape);
+      alert('✅ Étape définie à ' + etape);
+    }
   }
-</script>
 
+  function unlockBonus() {
+    localStorage.setItem('fafa_bonus', 'true');
+    alert('🎉 Bonus FAFA débloqué !');
+  }
 
-<script>
-  const userLang = navigator.language || navigator.userLanguage;
-  if (userLang.includes("fr")) {
-    document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
-    document.querySelector('[lang="fr"]').style.display = 'inline-block';
-  } else if (userLang.includes("ca")) {
-    document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
-    document.querySelector('[lang="ca"]').style.display = 'inline-block';
-  } else {
-    document.querySelectorAll('[lang]').forEach(el => el.style.display = 'none');
-    document.querySelector('[lang="en"]').style.display = 'inline-block';
+  function clearProgress() {
+    localStorage.clear();
+    alert('🧹 Progression réinitialisée');
   }
 </script>
 
